@@ -16,12 +16,34 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import StudentListCreateView
+from .views import SpecialtyListCreateView, SpecialtyDetailView, \
+    CourseListCreateView, CourseDetailView, \
+    GroupListCreateView, GroupDetailView, \
+    StudentListCreateView, StudentDetailView, \
+    TeacherListCreateView, TeacherDetailView, \
+    SessionResultListCreateView, SessionResultDetailView, RegistrationView
 
 urlpatterns = [
+    path('specialties/', SpecialtyListCreateView.as_view(), name='specialty-list-create'),
+    path('specialties/<int:pk>/', SpecialtyDetailView.as_view(), name='specialty-detail'),
+
+    path('courses/', CourseListCreateView.as_view(), name='course-list-create'),
+    path('courses/<int:pk>/', CourseDetailView.as_view(), name='course-detail'),
+
+    path('groups/', GroupListCreateView.as_view(), name='group-list-create'),
+    path('groups/<int:pk>/', GroupDetailView.as_view(), name='group-detail'),
+
     path('students/', StudentListCreateView.as_view(), name='student-list-create'),
+    path('students/<int:pk>/', StudentDetailView.as_view(), name='student-detail'),
+
     path('teachers/', TeacherListCreateView.as_view(), name='teacher-list-create'),
+    path('teachers/<int:pk>/', TeacherDetailView.as_view(), name='teacher-detail'),
+
     path('session-results/', SessionResultListCreateView.as_view(), name='session-result-list-create'),
+    path('session-results/<int:pk>/', SessionResultDetailView.as_view(), name='session-result-detail'),
+
+    path('register/', RegistrationView.as_view(), name='register'),
+    path('login/', obtain_auth_token, name='login'),
 ]
 
 from django.contrib import admin
